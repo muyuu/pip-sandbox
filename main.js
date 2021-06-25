@@ -35,6 +35,58 @@
             }
         }
     });
+
+    const adEl = document.getElementById('ad-container');
+    let adDisplayContainer = new google.ima.AdDisplayContainer(adEl, video1);
+    let adsLoader = new google.ima.AdsLoader(adDisplayContainer);
+
+    const adsRequest = new google.ima.AdsRequest();
+    adsRequest.adTagUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonly&cmsid=496&vid=short_onecue&correlator=';
+
+    adsRequest.linearAdSlotWidth = video1.clientWidth;
+    adsRequest.linearAdSlotHeight = video1.clientHeight;
+    adsRequest.nonLinearAdSlotWidth = video1.clientWidth;
+    adsRequest.nonLinearAdSlotHeight = video1.clientHeight / 3;
+
+    adsLoader.requestAds(adsRequest);
+
+    adsLoader.addEventListener(
+        google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED,
+        onAdsManagerLoaded,
+        false,
+    );
+
+    function onAdsManagerLoaded(adsManagerLoadedEvent) {
+        adsManager = adsManagerLoadedEvent.getAdsManager(video1);
+
+        adsManager?.addEventListener(
+            google.ima.AdEvent.Type.CONTENT_PAUSE_REQUESTED,
+            onContentPauseRequested,
+        );
+        adsManager?.addEventListener(
+            google.ima.AdEvent.Type.CONTENT_RESUME_REQUESTED,
+            onContentResumeRequested,
+        );
+
+        function onContentPauseRequested() {
+            video1.pause();
+        }
+        function onContentResumeRequested() {
+            video1.play();
+        }
+    }
+
+    video1.addEventListener('play', ()=> {
+        const width = video1.clientWidth;
+        const height = video1.clientHeight;
+        try {
+            adsManager.init(width, height, google.ima.ViewMode.NORMAL);
+            adsManager.start();
+        } catch (adError) {
+            console.log("AdsManager could not be started");
+            video1.play();
+        }
+    });
 })();
 
 function createVideo({ wrapperId, id, src}) {

@@ -2,6 +2,7 @@
     <div class="page-inner">
         <div class="video-box">
             <div class="video-wrapper" id="videoWrapper1">
+                <div id="ad-container" class="ad-container"></div>
                 <div class="btn-wrapper">
                     <button id="btn1">toggle pip video1</button>
                 </div>
@@ -20,6 +21,7 @@
     </div>
 </div>
 
+<script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
 <script src="./main.js"></script>
 <style>
     html,body {
@@ -44,6 +46,7 @@
         display: flex;
     }
     .video-wrapper {
+        /* position: relative; */
         width: 50%;
         aspect-ratio: 16 / 9;
         padding: 1em;
@@ -60,5 +63,14 @@
     .btn-wrapper {
         display: inline-block;
         margin: 1vw 0;
+    }
+
+    .ad-container {
+        /* position: absolute; */
+        /* left: 0; */
+        /* top: 0; */
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        /* z-index: 1; */
     }
 </style>
