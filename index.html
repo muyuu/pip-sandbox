@@ -1,0 +1,64 @@
+<div class="page">
+    <div class="page-inner">
+        <div class="video-box">
+            <div class="video-wrapper" id="videoWrapper1">
+                <div class="btn-wrapper">
+                    <button id="btn1">toggle pip video1</button>
+                </div>
+            </div>
+            <div class="video-wrapper" id="videoWrapper2">
+                <div class="btn-wrapper">
+                    <button id="btn2">toggle pip video2</button>
+                </div>
+            </div>
+        </div>
+        <div class="btn-box">
+            <div class="btn-wrapper">
+                <button id="btnToExitPIP">exit pip</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./main.js"></script>
+<style>
+    html,body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        color: #afafaf;
+        background-color: #343434;
+    }
+    @media (prefers-color-scheme: dark) {
+        html, body {
+            color: #343434;
+            background-color: #afafaf;
+        }
+    }
+    .page {
+        width: 90%;
+        max-width: 1600px;
+        margin: 1vh auto;
+    }
+    .video-box {
+        display: flex;
+    }
+    .video-wrapper {
+        width: 50%;
+        aspect-ratio: 16 / 9;
+        padding: 1em;
+        background: #555;
+    }
+    video {
+        width: 100%;
+    }
+    @media (prefers-color-scheme: dark) {
+        .video-wrapper {
+            background-color: #eee;
+        }
+    }
+    .btn-wrapper {
+        display: inline-block;
+        margin: 1vw 0;
+    }
+</style>
