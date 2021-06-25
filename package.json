@@ -1,0 +1,24 @@
+{
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  },
+  "name": "pip-sandbox",
+  "description": "## requirement - node.js v14 ~ ## let's get started ```bash",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "http-server -p 3434",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/muyuu/pip-sandbox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muyuu/pip-sandbox/issues"
+  },
+  "homepage": "https://github.com/muyuu/pip-sandbox#readme"
+}
