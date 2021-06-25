@@ -77,6 +77,10 @@
     }
 
     video1.addEventListener('play', ()=> {
+        let frame = document.getElementsByTagName('iframe');
+        const doc = frame[0].contentDocument;
+        console.log(doc);
+
         const width = video1.clientWidth;
         const height = video1.clientHeight;
         try {
